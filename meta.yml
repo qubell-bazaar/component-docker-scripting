@@ -1,0 +1,12 @@
+kit:
+  name: "Scripting Service on Docker"
+  link: https://github.com/qubell-bazaar/component-docker-scripting
+  applications:
+    - name: "Scripting Service on Docker"
+      manifest: https://raw.github.com/qubell-bazaar/component-docker-scripting/master/scripting.yml
+  provider:
+    name: Tonomi
+    link: http://tonomi.com
+  documentation:
+    overview: |
+      This application requires a Docker Service to be configured in your environment.

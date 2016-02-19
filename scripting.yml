@@ -1,0 +1,23 @@
+application:
+  configuration:
+    configuration.image:   "qubell/python-scripting"
+    configuration.version: "latest"
+  interfaces:
+    configuration:
+      "*": bind(scripting#configuration.*)
+    scripting:
+      "*": bind(scripting#scripting.*)
+  components:
+    scripting:
+      type: docker.Container
+      interfaces:
+        configuration:
+          image: configuration(string)
+          version: configuration(string)
+        scripting:
+          execute: receive-command(string script, object arguments => object results)
+      configuration:
+        docker.image: "{$.configuration.image}:{$.configuration.version}"
+        docker.command: [ "sleep", "inf" ]
+        docker.commands:
+          scripting.execute: [ "/invoke.py"  ]
