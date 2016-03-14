@@ -18,6 +18,6 @@ application:
           execute: receive-command(string script, object arguments => object results)
       configuration:
         docker.image: "{$.configuration.image}:{$.configuration.version}"
-        docker.command: [ "sleep", "inf" ]
+        docker.command: [ "sh", "-c", "while true; do sleep 1024d; done" ]
         docker.commands:
           scripting.execute: [ "/invoke.py"  ]
